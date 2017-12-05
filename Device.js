@@ -13,10 +13,10 @@ function Device(t,ma,c){
     //Instance Functions
     this.on = function(){
         if(this.state == "off" && this.juice >0){
-           this.state = "idle";
+             this.state = "idle";
         }
         else if (this.state == "idle" && this.juice >0){
-            this.state= "active";
+             this.state= "active";
            //complete from instructions
           }
     };
@@ -24,16 +24,22 @@ function Device(t,ma,c){
     this.charge = function(min){
         //adds more electricity to the device's juice depending on its state
         if(this.state == "off"){
-            let charge = (this.millAmps / this.capacity);
+            let charge = (this.milliAmps / this.capacity);
             let output = 1 - this.rate[0];
             let time = min / 60;
             this.juice = this.juice + charge*output*time;
         }
-        else if(){}
-        else if(){}
-        
+        else if(this.state == "idle"){
+             let milliAmps = this.milliamps*.9765
+       }
+        else if(this.state == "active"){
+             let milliAmps = this.milliAmps*.77
+       }
+
         //resets juice to 1 if it has exceeded 1
-        if(){}
+        if(this.juice > 1){
+             this.juice = 1
+       }
 
     };
 
