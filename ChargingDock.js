@@ -3,18 +3,18 @@ function ChargingDock(){
 
 //Instance variables
     this.ports; //finish from instructions
-    this.leds; //finish from instructions
+    this.leds = (red, yellow, green); //finish from instructions
 
 
 //Instance Fucntions
     this.plug = function(dvc){
         //type in here
     };
-  
+
     this.unplug = function(dvcIdx){
         //type in here
     };
-  
+
     this.chargeAll = function(min){
         //type in here
     };

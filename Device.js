@@ -21,19 +21,27 @@ function Device(t,ma,c){
           }
     };
 
+    this.wake = function(){
+        if(this.state == "off" || this.state == "idle"){
+            this.state = "active"
+        }
+    }
+    this.use = function(min){
+
+        let charge = (this.milliAmps / this.capacity);
+        let time = min / 60;
+        this.juice = this.juice + charge*output*time;
+    };
     this.charge = function(min){
         //adds more electricity to the device's juice depending on its state
         if(this.state == "off"){
-            let charge = (this.milliAmps / this.capacity);
             let output = 1 - this.rate[0];
-            let time = min / 60;
-            this.juice = this.juice + charge*output*time;
         }
         else if(this.state == "idle"){
-             let milliAmps = this.milliamps*.9765
+             let output = 1 - this.rate[1];
        }
         else if(this.state == "active"){
-             let milliAmps = this.milliAmps*.77
+             let output = 1 - this.rate[2];
        }
 
         //resets juice to 1 if it has exceeded 1
