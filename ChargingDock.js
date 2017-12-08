@@ -2,13 +2,21 @@
 function ChargingDock(){
 
 //Instance variables
-    this.ports; //finish from instructions
-    this.leds = (red, yellow, green); //finish from instructions
+    this.ports = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]; //finish from instructions
+    this.leds = ["red", "yellow", "green"]; //finish from instructions
 
 
 //Instance Fucntions
     this.plug = function(dvc){
-        //type in here
+        for (let i = 0; i < this.ports.length; i++){
+            if (this.ports[i] == undefined && this.leds[i] == "red")  {
+                this.ports[i]=dvc;
+                this.leds[i]="yellow";
+                if (dvc.juice >0.99) {
+                    this.leds[i]="green"
+                }
+            }
+        }
     };
 
     this.unplug = function(dvcIdx){
@@ -23,7 +31,9 @@ function ChargingDock(){
 }
 
 //defines the testing code
-function main(){}
+function main(){
+
+}
 
 //runs the main code
 main();
