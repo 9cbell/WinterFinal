@@ -8,7 +8,11 @@ function ChargingDock(){
 
 //Instance Fucntions
     this.plug = function(dvc){
-        //type in here
+        for(let p=0; p<=8; p++){
+             if(this.ports[p] == "red"){
+             }
+            }
+            if(dvc >)
     };
 
     this.unplug = function(dvcIdx){
