@@ -6,7 +6,7 @@ function ChargingDock(){
     this.leds = ["red", "red", "red", "red", "red","red", "red", "red"]; //finish from instructions
 
 
-//Instance Fucntions
+//Instance Functions
     this.plug = function(dvc){
         for(let p=0; p<=8; p++){
              if(this.leds[p] == "red"){
@@ -21,15 +21,30 @@ function ChargingDock(){
     };
 
     this.unplug = function(dvcIdx){
-        for(d=0; d<= this.leds.length; d++){
-            if(this.ports[d] == "yellow" || "green"){
-                
+            if(this.leds[dvcIdx] == "yellow" || "green"){
+                let temp;
+                temp = this.ports[dvcIdx];
+                this.ports[dvcIdx] = "red"
+
+                return temp;
             }
         }
     };
 
     this.chargeAll = function(min){
-        //type in here
+        for(i=0; i<this.leds; i++){
+            if(!(this.leds[i] == "red")){
+                this.ports[i].charge(min);
+
+                if(dvc.juice > 0.99){
+                    this.leds[i] = "green";
+                    if (dvc.juice > 0.99){
+                        dvc.juice = 1;
+                    }
+                }
+            }
+
+        }
     };
 
 
