@@ -5,7 +5,7 @@ function Device(t,ma,c){
     //Instance Variables
     this.type = t;
     this.state = "off";
-    this.millAmps = ma;
+    this.milliAmps = ma;
     this.capacity = c;
     this.juice = 1;
     this.rate = [0.0015,0.0235,0.23];
@@ -47,7 +47,7 @@ function Device(t,ma,c){
     this.charge = function(min){
         //adds more electricity to the device's juice depending on its state
 
-        let charge = (this.millAmps / this.capacity);
+        let charge = (this.milliAmps / this.capacity);
         let time = min / 60;
         let output = 0;
         if(this.state == "off"){
@@ -92,12 +92,17 @@ function main(){
     flemphone.on();
     flemphone.wake();
     flemphone.use(90);
+    console.log(flemphone.power());
     flemphone.sleep();
     flemphone.use(300);
+    console.log(flemphone.power());
     flemphone.off();
     flemphone.use(300);
+    console.log(flemphone.power());
     flemphone.charge(60);
+    console.log(flemphone.power());
     flemphone.charge(1000);
+    console.log(flemphone.power());
     console.log(flemphone.state)
 }
 //runs the testing code.
