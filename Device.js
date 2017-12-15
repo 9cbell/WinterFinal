@@ -13,7 +13,6 @@ function Device(t,ma,c){
     //Instance Functions
 
     this.power = function(){
-        this.juice = ma/c
       return this.juice * 100;
     }
     this.on = function(){
